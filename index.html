@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Start</title>
+</head>
+<body>
+    <main id="main-container">
+        <section id="sectors">
+            <div class="header-box">
+               <div class="header-content">
+                <h1>Start In Ireland</h1>
+                <h3>Your pathway to Ireland's entire startup ecosystem</h3>
+                <p>Complete each section as required in order to refine your search results</p>
+               </div>
+
+               <div class="header-img">
+                   <img src="img/consulting.jpeg" alt="image header" />
+               </div>
+            </div>
+
+            <div id="sector-one-box">
+                <div class="container">
+                    <h3>Sector <i title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. " class="fas fa-info-circle"></i></h3>
+                    <p>What sector or industry is your business?</p>
+                </div>
+
+                <div class="options">
+                    <label><input type="checkbox" class="sector-1" /> All</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                    <label><input type="checkbox" class="sector-1" /> Option</label>
+                </div>
+            </div>
+
+            <div id="startup-stage">
+                <div class="container">
+                    <h3>Start-up Stage <i  title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. "  class="fas fa-info-circle"></i></h3>
+                    <p>What stage is your Start-up?</p>
+
+                    <div class="content-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>Stage 1</p>
+                        <h4>Ideation</h4>
+                        <p>This is the very beginning of the Startup lifecycle, before your start up is even officially in existence. You've got your business idea and you are ready to take the first steps as a founder.</p>
+                        <button data-bs-toggle="modal" data-bs-target="#rangemodal1">Show Stage 1 Information</button>
+                    </div>
+
+                    <div class="range-box">
+                        <div class="container">
+                            <div class="range-box-item">
+                                <input type="radio" id="startuptChoice1"
+                                name="startup-stage" value="Ideation">
+                                <label for="startuptChoice1">Stage 1 <br /> <strong>Ideation</strong></label>
+                            </div>
+
+                            <div class="range-box-item">
+                                <input type="radio" id="startuptChoice2"
+                                name="startup-stage" value="Validation">
+                                <label for="startuptChoice2">Stage 2 <br /> <strong>Validation</strong></label>
+                            </div>
+
+                            <div class="range-box-item">
+                                <input type="radio" id="startuptChoice3"
+                                name="startup-stage" value="Traction">
+                                <label for="startuptChoice3">Stage 3 <br /> <strong>Traction</strong></label>
+                            </div>
+
+                            <div class="range-box-item">
+                                <input type="radio" id="startuptChoice4"
+                                name="startup-stage" value="Acceleration">
+                                <label for="startuptChoice4">Stage 4 <br /> <strong>Acceleration</strong></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="rangemodal1" tabindex="-1" aria-labelledby="rangemodalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="rangemodalLabel">Stage 1 <br /> Ideation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        This is the very beginning of the Startup lifecycle, before your start up is even officially in existence. You've got your business idea and you are ready to take the first steps as a founder.This is the very beginning of the Startup lifecycle, before your start up is even officially in existence. You've got your business idea and you are ready to take the first steps as a founder.
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wheel-container">
+            bla bla bla
+        </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>

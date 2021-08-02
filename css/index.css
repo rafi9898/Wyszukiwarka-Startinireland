@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    padding: 30px 20px;
+}
+
+#main-container {
+    width: 70vw;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+#sectors {
+    width: 50%;
+}
+
+#wheel-container {
+    width: 40%;
+}
+
+div.header-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #002E5B;
+    color: #fff;
+}
+
+
+div.header-content {
+    padding: 15px;
+    width: 75%;
+    padding-right: 20%;
+}
+
+div.header-content  > h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+div.header-content  > h3 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+div.header-content  > p {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+div.header-img {
+    width: 30%;
+}
+
+div.header-img > img {
+    width: 100%;
+    min-height: 100%;
+}
+
+#sector-one-box {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #002E5B;
+    color: #fff;
+    padding: 15px;
+    padding-bottom: 30px;
+}
+
+#sector-one-box > div.container > h3 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+#sector-one-box > div.container > p {
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+#sector-one-box > div.container > h3 > i {
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+#sector-one-box > div.options {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#sector-one-box > div.options > label {
+    width: 30%;
+    margin-top: 11px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 15px;
+}
+
+#sector-one-box > div.options > label > input {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+#startup-stage{
+    margin-top: 50px;
+}
+
+#startup-stage > div.container > h3 {
+    font-size: 24px;
+    color:#002e5b ;
+    font-weight: bold;
+}
+
+#startup-stage > div.container > p {
+    font-size: 15px;
+    color:#002e5b ;
+}
+
+#startup-stage .content-box {
+    text-align: center;
+}
+
+#startup-stage .content-box i {
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+    font-size: 28px;
+    color: #2B1D51;
+    border: 1px solid salmon;
+    border-radius: 90px;
+}
+
+#startup-stage .content-box p {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+#startup-stage .content-box h4 {
+    font-weight: 600;
+    font-size: 20px;
+    color: #003a6d;
+}
+
+#startup-stage .content-box p {
+    font-size: 15px;
+    color: #003a6d;
+    margin-bottom: 10px;
+}
+
+#startup-stage .content-box button {
+    color: #002e5b;
+    border-color: #002e5b;
+    order: 1px solid #2793cb;
+    background-color: #fff;
+    fill: white;
+    width: 16rem;
+    height: 3rem;
+    margin-top: .2rem;
+    min-height: 3rem;
+    flex: 0 0 100%;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.range-box > div.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    text-align: center;
+}
+
+div.range-box-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 25%;
+    text-align: center;
+}
+
+div.range-box-item > input {
+    margin: 0 auto;
+    margin-bottom: 6px;
+    width: 30px;
+    height: 30px;
+}
