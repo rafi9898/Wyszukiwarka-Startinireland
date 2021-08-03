@@ -164,6 +164,8 @@ div.header-img > img {
     border-color: #002e5b;
     order: 1px solid #2793cb;
     background-color: #fff;
+    border: 1px solid;
+    padding: 25px;
     fill: white;
     width: 16rem;
     height: 3rem;
@@ -200,4 +202,119 @@ div.range-box-item > input {
     margin-bottom: 6px;
     width: 30px;
     height: 30px;
+}
+
+
+#services-required-box {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #089EC1;
+    color: #fff;
+    padding: 15px;
+    padding-bottom: 30px;
+}
+
+#services-required-box > div.container > h3 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+#services-required-box > div.container > p {
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+#services-required-box > div.container > h3 > i {
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+#services-required-box> div.options {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#services-required-box > div.options > label {
+    width: 30%;
+    margin-top: 11px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 15px;
+}
+
+#services-required-box > div.options > label > input {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+
+#location {
+    margin-top: 50px;;
+}    
+
+#location > div.container > h3 {
+    font-size: 24px;
+    color: #002e5b;
+    font-weight: bold;
+}
+
+#location > div.container > p {
+    font-size: 15px;
+color: #002e5b;
+margin-bottom: 30px;
+}
+
+
+#salary {
+    margin-top: 50px;;
+}    
+
+#salary > div.container > h3 {
+    font-size: 24px;
+    color: #002e5b;
+    font-weight: bold;
+}
+
+#salary > div.container > p {
+    font-size: 15px;
+color: #002e5b;
+margin-bottom: 30px;
+}
+
+#summary {
+    padding: 20px;
+}
+
+#summary > hr {
+    margin-bottom: 20px;
+}
+
+#summary > button {
+    color: #002e5b;
+    border-color: #002e5b;
+    order: 1px solid #2793cb;
+    border: 1px solid;
+    background-color: #fff;
+    fill: white;
+    width: 16rem;
+    height: 3rem;
+    margin-top: .2rem;
+    min-height: 3rem;
+    flex: 0 0 100%;
+    display: flex;
+  
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#summary > p {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #4c4c4c;
 }

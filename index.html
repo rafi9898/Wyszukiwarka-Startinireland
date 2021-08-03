@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+    <link rel="stylesheet" href="css/wheel.css">
     <link rel="stylesheet" href="./css/index.css">
     <title>Start</title>
 </head>
@@ -113,14 +115,130 @@
                 </div>
                 </div>
             </div>
+            
+            <div id="services-required-box">
+                <div class="container">
+                    <h3>Services Required <i title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. " class="fas fa-info-circle"></i></h3>
+                    <p>What specific services does your startup require?</p>
+                </div>
+
+                <div class="options">
+                    <label><input type="checkbox" class="services-1" /> All</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                    <label><input type="checkbox" class="services-1" /> Option</label>
+                </div>
+            </div>
+
+
+            <div id="location">
+                <div class="container">
+                    <h3>Location <i title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. " class="fas fa-info-circle"></i></h3>
+                    <p>If you wish to limit your search results to your immediate geographical area, please complete below.</p>
+
+                    <select id="choices-multiple-remove-button" placeholder="Select city" multiple>
+                        <option value="HTML">Świdnica</option>
+                        <option value="Jquery">Wrocław</option>
+                        <option value="CSS">Warszawa</option>
+                        <option value="Bootstrap 3">Kraków</option>
+                    </select> 
+                      
+                </div>
+            </div>
+
+
+            <div id="salary">
+                <div class="container">
+                    <h3>Salary <i title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. " class="fas fa-info-circle"></i></h3>
+                    <p>If you wish to limit your search results to your immediate geographical area, please complete below.</p>
+
+                    <select id="choices-multiple-remove-button" placeholder="Select price" multiple>
+                        <option value="HTML">0-500PLN</option>
+                        <option value="Jquery">500-1000PLN</option>
+                    </select> 
+                      
+                </div>
+            </div>
+
+
+            <div id="summary">
+                <hr />
+                <button>View Results</button>
+                <p>The content of the Start in Ireland website has been prepared to provide information to Irish Startups. By providing this website Enterprise Ireland is not offering legal or commercial recommendations. The information on this website is not a complete source of information. If you need specific advice you should always consult a suitably qualified professional.</p>
+                <p>While Enterprise Ireland has made every effort to ensure that the information contained within the website is correct and accurate nevertheless it is possible that errors or omissions in the content may occur from time to time. No liability whatsoever is accepted by Enterprise Ireland, its servants or agents for any errors or omissions in the information or data or for any loss or damage occasioned to any person acting or refraining from acting as a result of the information or data contained within this website.</p>
+                <p>Enterprise Ireland reserves the right at any time to revise, amend, alter or delete the information provided on this website.</p>
+            </div>
         </section>
 
         <section id="wheel-container">
-            bla bla bla
+            <div style="position: fixed;" class="stick-to-position box-shadow wheel-modal wheel-container">
+                <label for="toggle-wheel" class="wheel-open-close">
+                    <svg class="icon-close">
+                        <use xlink:href="#cross"></use>
+                    </svg>
+                    <div class="checkmark"></div>
+                    <span class="checkmark-number current" id="check-counter">0</span>
+                    <span class="checkmark-number max">4</span>
+                </label>
+                <div class="wheel">
+                    <span class="wheel-label"><span id="steps-completed">0</span> of <span>4</span><br> <span class="label-complete">Complete</span></span>
+                    <div data-quart="sector" class="quart top-left focused">
+                        <p data-quart="sector" class="quart-text top top-left focused">Sector</p>
+                    </div>
+                    <div data-quart="startUp" class="quart top-right focused">
+                        <p data-quart="startUp" class="quart-text top top-right focused">Stage</p>
+                    </div>
+                    <div data-quart="services" class="quart bottom-right focused">
+                        <p data-quart="services" class="quart-text bottom bottom-right focused">Service</p>
+                    </div>
+                    <div data-quart="location" class="quart bottom-left focused">
+                        <p data-quart="location" class="quart-text bottom bottom-left focused">Location</p>
+                    </div>
+                </div>
+                <label class="wheel-title">
+                    <span>Resources:</span> <span class="wheel-title-number" id="resource-counter" data-resources-counter="">607</span>
+                </label>
+                <div class="resources-table">
+                    <svg class="icon icon-calendar wheel-icon events-icon">
+                        <use xlink:href="#calendar"></use>
+                    </svg>
+                    <span class="events-text text">Events:</span> <span id="events-counter" data-events-counter="" class="events-no space-right">71</span>
+                    <svg class="icon icon-question-mark wheel-icon small supports-icon">
+                        <use xlink:href="#wheel-question-mark"></use>
+                    </svg>
+                    <span class="supports-text text">Supports:</span> <span id="supports-counter" data-supports-counter="" class="supports-no">514</span>
+                    <svg class="icon icon-euro wheel-icon funding-icon">
+                        <use xlink:href="#euro-icon"></use>
+                    </svg>
+                    <span class="funding-text text">Funding:</span> <span id="funding-counter" data-funding-counter="" class="funding-no space-right">97</span>
+                    <svg class="icon icon-settings wheel-icon services-icon">
+                        <use xlink:href="#settings-icon"></use>
+                    </svg>
+                    <span class="services-text text">Services:</span> <span id="services-counter" data-services-counter="" class="services-no">73</span>
+                </div>
+                <div class="loader-icon-container hidden" data-resources-results-loader=""><div class="loader-icon"></div></div>
+                <div>
+                    <button id="view-results" data-search-button="" data-wheel-search="" class="button wheel-button">View Results</button>
+                </div>
+               </div>
         </section>
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
     <script src="./js/app.js"></script>
 </body>
 </html>
