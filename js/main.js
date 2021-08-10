@@ -63,6 +63,7 @@ const getLocation = () => {
       locationsList.map(location => {
           let optionItem = document.createElement("option");
           optionItem.innerHTML = location.name;
+          optionItem.setAttribute("value", location.id)
           listSelect.appendChild(optionItem);
       })
       })

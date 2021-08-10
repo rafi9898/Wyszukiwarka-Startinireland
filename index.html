@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
     <link rel="stylesheet" href="css/wheel.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/results.css">
     <link rel="stylesheet" href="./css/index.css">
     <title>Start</title>
@@ -161,59 +162,32 @@
         </section>
 
         <section id="wheel-container">
-            <div style="position: fixed;" class="stick-to-position box-shadow wheel-modal wheel-container">
-                <label for="toggle-wheel" class="wheel-open-close">
-                    <svg class="icon-close">
-                        <use xlink:href="#cross"></use>
-                    </svg>
-                    <div class="checkmark"></div>
-                    <span class="checkmark-number current" id="check-counter">0</span>
-                    <span class="checkmark-number max">4</span>
-                </label>
-                <div class="wheel">
-                    <span class="wheel-label"><span id="steps-completed">0</span> of <span>4</span><br> <span class="label-complete">Complete</span></span>
-                    <div data-quart="sector" class="quart top-left focused">
-                        <p data-quart="sector" class="quart-text top top-left focused">Sector</p>
-                    </div>
-                    <div data-quart="startUp" class="quart top-right focused">
-                        <p data-quart="startUp" class="quart-text top top-right focused">Stage</p>
-                    </div>
-                    <div data-quart="services" class="quart bottom-right focused">
-                        <p data-quart="services" class="quart-text bottom bottom-right focused">Service</p>
-                    </div>
-                    <div data-quart="services" class="quart bottom-right specialquart focused">
-                        <p data-quart="services" class="quart-text bottom bottom-right focused">asdsad sad</p>
-                    </div>
-                    <div data-quart="location" class="quart bottom-left focused">
-                        <p data-quart="location" class="quart-text bottom bottom-left focused">Location</p>
-                    </div>
+            <div id="fixed-box">
+            <div class="container">
+                <div class="number-of-active-section">
+                    <h3>0 of 5</h3>
+                    <p>Complete</p>
                 </div>
-                <label class="wheel-title">
-                    <span>Resources:</span> <span class="wheel-title-number" id="resource-counter" data-resources-counter="">607</span>
-                </label>
-                <div class="resources-table">
-                    <svg class="icon icon-calendar wheel-icon events-icon">
-                        <use xlink:href="#calendar"></use>
-                    </svg>
-                    <span class="events-text text">Events:</span> <span id="events-counter" data-events-counter="" class="events-no space-right">71</span>
-                    <svg class="icon icon-question-mark wheel-icon small supports-icon">
-                        <use xlink:href="#wheel-question-mark"></use>
-                    </svg>
-                    <span class="supports-text text">Supports:</span> <span id="supports-counter" data-supports-counter="" class="supports-no">514</span>
-                    <svg class="icon icon-euro wheel-icon funding-icon">
-                        <use xlink:href="#euro-icon"></use>
-                    </svg>
-                    <span class="funding-text text">Funding:</span> <span id="funding-counter" data-funding-counter="" class="funding-no space-right">97</span>
-                    <svg class="icon icon-settings wheel-icon services-icon">
-                        <use xlink:href="#settings-icon"></use>
-                    </svg>
-                    <span class="services-text text">Services:</span> <span id="services-counter" data-services-counter="" class="services-no">73</span>
+            <canvas id="myChart"></canvas>
+            
+            <div class="chart-details">
+                <h4>Resources: 404</h4>
+            </div>
+
+            <div class="chart-details-2">
+                <div class="containers">
+                    <span>Events: 200</span>
+                    <span>Supports: 200</span>
+                    <span>Founding: 200</span>
+                    <span>Services: 200</span>
                 </div>
-                <div class="loader-icon-container hidden" data-resources-results-loader=""><div class="loader-icon"></div></div>
-                <div>
-                    <button id="view-results" data-search-button="" data-wheel-search="" class="button wheel-button">View Results</button>
-                </div>
-               </div>
+            </div>
+
+            <div class="chart-btn">
+                <button>View Result</button>
+            </div>
+        </div>
+    </div>
         </section>
     </main>
 
@@ -370,6 +344,7 @@
 ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script src="./js/chart.js"></script>
     <script src="./js/app.js"></script>
     <script src="./js/testimonials.js"></script>
     <script src="./js/action.js"></script>

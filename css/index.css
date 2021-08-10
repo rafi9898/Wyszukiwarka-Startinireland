@@ -356,6 +356,81 @@ i.fa-info {
         "bottom-left bottom-right" !important;
 }
 
+#wheel-container {
+    width: 50%
+}
+
+
+#wheel-container .container {
+    width: 18vw;
+    margin-top: 40px;
+    background: #fff;
+    padding: 40px 20px;
+}
+
+div.number-of-active-section {
+    position: absolute;
+    top: 22vh;
+    left: 46%;
+    text-align: center;
+}
+
+div.number-of-active-section > h3 {
+    font-size: 27px;
+    text-align: center;
+}
+
+div.number-of-active-section > p {
+  
+    text-align: center;
+}
+
+.chart-details {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.chart-details > h4 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.chart-details-2 {
+    margin-top: 20px;
+}
+
+.chart-details-2 .containers {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.chart-details-2 .containers > span {
+    width: 40%;
+    margin-bottom: 3px;
+}
+
+.chart-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.chart-btn > button {
+    border-radius: 90px;
+    border: 1px solid;
+    padding: 13px 40px;
+}
+
+
+#fixed-box {
+    position: fixed;
+    width: 50%;
+}
+
+
+
 
 @media(max-width: 1100px) {
     #sectors {

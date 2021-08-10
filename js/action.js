@@ -16,7 +16,7 @@ let selectedLocation = [];
 
 
 //Correct List
-let correctGrantList;
+let correctGrantList = 0;
 
 
 const allwaysSearch = () => {
@@ -24,16 +24,21 @@ const allwaysSearch = () => {
     .then((resp) => resp.json()) // Transform the data into json
     .then(function(data) {
       const grantsList = data;
-      console.log(grantsList)
-      correctGrantList = grantsList.filter(grant => {
-        let result = selectedSectors.some(i => { return grant.industry_sector.includes(i)});
-        return result
-      })
+
+        correctGrantList = grantsList.filter(grant => {
+            let result =  selectedSectors.some(i => { return selectedSectors && selectedSectors.length < 1 ? !grant.industry_sector.includes("sadsad") : grant.industry_sector.includes(Number(i))}) && selectedStartUp.some(i => { return  grant.startup_stage.includes(Number(i))}) && selectedServices.some(i => { return  grant.services.includes(Number(i))}) &&  selectedLocation.some(i => { return  selectedLocation.includes("All") ? !grant.location.includes(Number(213123213)) : grant.location.includes(Number(i))})
+            return result
+
+          })  
+      
       console.log(correctGrantList)
+      //console.log(selectedLocation)
       })
 
      
 }
+
+
 
 
 
