@@ -124,6 +124,7 @@ div.results-box > .container-box {
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
+    place-items: flex-start;
 }
 
 div.result-item {
