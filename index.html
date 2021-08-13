@@ -33,6 +33,11 @@
                 <div class="options">
                     <label><input class="sector-1" type="checkbox" id="select-all-sectors"><span>All</span></label>
                 </div>
+
+                <div class="minority">
+                    <h3>Minority</h3>
+                    <p>What is your minority? <br /> Emigrant [YES] <label><input type="checkbox" id="minority-checkbox" /> </label></p>
+                </div>
             </div>
 
             <div id="startup-stage">
@@ -132,10 +137,10 @@
 
                     <div class="select-container">
                     <select id="choices-multiple-remove-button" placeholder="Select price" multiple>
-                        <option value="1">0-500$</option>
-                        <option value="2">500-1000$</option>
-                        <option value="3">1000-1500$</option>
-                        <option value="4">1500-2000$</option>
+                        <option value="1">0-50000$</option>
+                        <option value="2">50000-250000$</option>
+                        <option value="3">250000-1000000$</option>
+                        <option value="4">Over 1000000$</option>
                     </select> 
                 </div>
                 </div>
@@ -176,10 +181,7 @@
 
             <div class="chart-details-2">
                 <div class="containers">
-                    <span>Events: 200</span>
-                    <span>Supports: 200</span>
-                    <span>Founding: 200</span>
-                    <span>Services: 200</span>
+    
                 </div>
             </div>
 
@@ -192,12 +194,12 @@
     </main>
 
 
-    <section style="display: block" id="search-results">
+    <section id="search-results">
         <div class="container-box">
             <div class="info-box">
                 <div class="container-box">
                     <div class="info">
-                        <strong>599 Results</strong> <span>Based on your answers <i title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. " class="fas fa-info"></i></span>
+                        <strong id="results-score">599 Results</strong> <span>Based on your answers <i title="Tutaj będzie znajdował się opis, który po wdrożeniu dodam. Tutaj będzie znajdował się opis, który po wdrożeniu dodam. " class="fas fa-info"></i></span>
                     </div>
 
                     <div class="export-btn-container">
@@ -240,5 +242,6 @@
     <script src="./js/app.js"></script>
     <script src="./js/testimonials.js"></script>
     <script src="./js/action.js"></script>
+    <script src="./js/results.js"></script>
 </body>
 </html>

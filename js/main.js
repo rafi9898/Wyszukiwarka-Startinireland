@@ -4,7 +4,7 @@ const optionsServices = document.querySelector("#services-required-box > div.opt
 const locationSelect = document.querySelector(".location-select");
 
 const getIndustrySector = () => {
-    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector")
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector?per_page=100")
     .then((resp) => resp.json()) // Transform the data into json
     .then(function(data) {
       const industryList = data;
@@ -30,7 +30,7 @@ const getIndustrySector = () => {
 
 
 const getServices = () => {
-    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/services")
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/services?per_page=100")
     .then((resp) => resp.json()) // Transform the data into json
     .then(function(data) {
       const servicesList = data;
@@ -55,10 +55,11 @@ const getServices = () => {
 }
 
 const getLocation = () => {
-    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/location")
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/location?per_page=100")
     .then((resp) => resp.json()) // Transform the data into json
     .then(function(data) {
       const locationsList = data;
+      console.log(locationsList)
       const listSelect = document.querySelector("#choices-multiple-remove-button-1");
       locationsList.map(location => {
           let optionItem = document.createElement("option");
@@ -73,7 +74,7 @@ const getLocation = () => {
 
 
 const getStartupStage = () => {
-    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/startup_stage")
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/startup_stage?per_page=100")
     .then((resp) => resp.json()) // Transform the data into json
     .then(function(data) {
       const startupList = data;
@@ -110,10 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         var multipleCancelButton = new Choices('#choices-multiple-remove-button-1', {
             removeItemButton: true,
-            maxItemCount:5,
-            searchResultLimit:5,
-            renderChoiceLimit:5
+            maxItemCount:824,
+            searchResultLimit:535,
+            renderChoiceLimit:535
             });
-    }, 4000)
+    }, 6000)
     
 }, false);

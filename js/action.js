@@ -2,8 +2,8 @@ const selectAllSector = document.querySelector("#select-all-sectors");
 const selectAllServices = document.querySelector("#select-all-services");
 const selectPrice = document.querySelector("select#choices-multiple-remove-button");
 const selectLocation = document.querySelector("select.location-select");
-const showResultBtnBottom = document.querySelector("#view-result2");
 const numberOfResultsSpan = document.querySelector("#number-of-current-item");
+const minorityCheckbox = document.querySelector("#minority-checkbox");
 let checkedSector = false;
 let checkedServices = false;
  
@@ -14,6 +14,7 @@ let selectedStartUp = [];
 let selectedServices = [];
 let selectedFounding = [];
 let selectedLocation = [];
+let selectedMinority = false;
  
  
 //Correct List
@@ -26,38 +27,10 @@ let prices = {
     "4": []
 }
  
-// 1 - 0 - 500
-// 2 - 500 - 1000
-// 3 - 1000 - 1500
-// 4 - 1500 - 2000
+//Types
+const typeWheel = document.querySelector("div.chart-details-2 > div.containers")
 
-showResultBtnBottom.addEventListener("click", () => {
-    let mainDoneList = correctGrantList;
-    let containerResultBox = document.querySelector("div.results-box > div.container-box");
-    mainDoneList.map(item => {
-        const resultItem = document.createElement("div");
-        resultItem.className = "result-item";
-        resultItem.innerHTML = `<div class="result-item-header">
-        <span><i class="far fa-calendar-alt"></i> Support</span> 
-        <span><i class="far fa-calendar-alt"></i> Events</span>
-    </div>
 
-    <div class="result-item-title">
-        <h3>${item.title.rendered}</h3>
-    </div>
-
-    <div class="result-item-content">
-        <p>${item.content.rendered}</p>
-    </div>
-
-    <div class="result-item-footer">
-        <a href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
-    </div>`;
-
-    containerResultBox.appendChild(resultItem);
-    })
- 
-})
 
 const renderChartNew = () => {
     renderChartGlobal(selectedSectors.length > 0 ? '#34254A' : '#563769', selectedStartUp.length > 0 ? '#34254A' : '#563769', selectedServices.length > 0 ? '#34254A' : '#563769', selectedFounding.length > 0 ? '#34254A' : '#563769', selectedLocation.length > 0 ? '#34254A' : '#563769');
@@ -73,24 +46,25 @@ const renderChartNew = () => {
 fetchGrants()
  
 function fetchGrants() {
-    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/grants")
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/grants?per_page=100")
         .then((resp) => resp.json()) // Transform the data into json
         .then(function (data) {
             grants = data;
             correctGrantList = data;
             numberOfResultsSpan.innerHTML = correctGrantList.length;
         })
+      
 }
  
 function fetchPrices() {
-    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/funding_amound")
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/funding_amound?per_page=100")
         .then((resp) => resp.json()) // Transform the data into json
         .then(function (data) {
             const pricesObj = {
-                "1": data.filter(d => d.slug >=0 && d.slug < 500),
-                "2": data.filter(d => d.slug >=500 && d.slug < 1000),
-                "3": data.filter(d => d.slug >=1000 && d.slug < 1500),
-                "4": data.filter(d => d.slug >=1500 && d.slug < 2000)
+                "1": data.filter(d => d.slug >=0 && d.slug < 50000),
+                "2": data.filter(d => d.slug >=50000 && d.slug < 250000),
+                "3": data.filter(d => d.slug >=250000 && d.slug < 1000000),
+                "4": data.filter(d => d.slug >=1000000)
             }
  
             prices = pricesObj
@@ -105,6 +79,9 @@ const filter = () => {
  
     if (selectedSectors.length !== 0) {
         filtered = filtered.filter(grant => selectedSectors.some(i => grant.industry_sector.includes(Number(i))))
+    }
+    if (selectedMinority) {
+        filtered = filtered.filter(grant => grant.minority.includes("Yes"))
     }
     if(selectedStartUp.length !== 0) {
         filtered = filtered.filter(grant => selectedStartUp.some(i => grant.startup_stage.includes(Number(i))))
@@ -123,8 +100,29 @@ const filter = () => {
     correctGrantList = filtered
     numberOfResultsSpan.innerHTML = correctGrantList.length;
     renderChartNew();
+    renderChartData();
 }
 
+
+function renderChartData() {
+    fetch("https://ftbi.siteon.pl/wp-json/wp/v2/type_grant")
+        .then((resp) => resp.json()) // Transform the data into json
+        .then(function (data) {
+            const mapData = data;
+            typeWheel.innerHTML = "";
+            mapData.map(tData  => {
+               const lengthType = correctGrantList.filter(grant => grant.type_grant.includes(tData.id)).length;
+
+                const spanElement = document.createElement("span");
+                spanElement.innerHTML = `${tData.name}: ${lengthType}`;
+                typeWheel.appendChild(spanElement);
+                
+            })
+            
+        })
+
+
+}
 
  
 const setStartup = (id) => {
@@ -132,6 +130,10 @@ const setStartup = (id) => {
     filter()
 }
  
+minorityCheckbox.addEventListener("change", (e) => {
+    selectedMinority = e.target.checked;
+    filter()
+})
  
 selectLocation.addEventListener("change", (e) => {
     selectedLocation = [];
