@@ -83,7 +83,7 @@ function renderTabList(search) {
     </div>
 
     <div style="text-align:center" class="result-item-content">
-        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180) + `...`}</p>
+        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}</p>
     </div>
 
     <div class="result-item-footer">
@@ -198,7 +198,7 @@ function renderResults() {
     </div>
 
     <div style="text-align:center" class="result-item-content">
-        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180) + `...<span onclick="document.querySelector('.${item.slug}result-content').innerHTML = 'sadsa'" style='color: blue'>more</span>`}</p>
+        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}...</p>
     </div>
 
     <div class="result-item-footer">
