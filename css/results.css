@@ -47,11 +47,12 @@ div.info-box .container-box .info > span > i {
     padding-right: 17px;
 }
 
-div.export-btn-container > button {
+div.export-btn-container > a {
     color: #002e5b;
     border-color: #002e5b;
     background-color: #fff;
     fill: white;
+    padding: 13px;
     padding-left: 13px;
     padding-right: 13px;
     height: 3rem;

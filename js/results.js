@@ -2,13 +2,102 @@ const searchResultBox2 = document.querySelector("#search-results");
 const mainContainer = document.querySelector("#main-container");
 const viewResultBtn1 = document.querySelector("#view-result2");
 const viewResultBtn22 = document.querySelector("#wheel-container button");
+const startAgainBtn = document.querySelector("#start-again");
 
 const finallResult = [];
+
+//Options Tab
+const allOptions = document.querySelector("#all-options");
+const foundingOptions = document.querySelector("#founding-options");
+const supportOptions = document.querySelector("#support-options");
+const servicesOptions = document.querySelector("#services-options");
+const eventsOptions = document.querySelector("#events-options");
+
+
+startAgainBtn.addEventListener("click", () => {
+    window.location.reload(true);
+})
+
+allOptions.addEventListener("click", () => {
+    allOptions.style = 'border-color: #fff !important;';
+    foundingOptions.style = 'border-color: transparent !important;';
+    supportOptions.style = 'border-color: transparent !important;';
+    servicesOptions.style = 'border-color: transparent !important;';
+    eventsOptions.style = 'border-color: transparent !important;';
+    renderTabList("All");
+})
+
+foundingOptions.addEventListener("click", () => {
+    allOptions.style = 'border-color: transparent !important;';
+    foundingOptions.style = 'border-color: #fff !important;';
+    supportOptions.style = 'border-color: transparent !important;';
+    servicesOptions.style = 'border-color: transparent !important;';
+    eventsOptions.style = 'border-color: transparent !important;';
+    renderTabList("Funding");
+})
+
+supportOptions.addEventListener("click", () => {
+    allOptions.style = 'border-color: transparent !important;';
+    foundingOptions.style = 'border-color: transparent !important;';
+    supportOptions.style = 'border-color: #fff !important;';
+    servicesOptions.style = 'border-color: transparent !important;';
+    eventsOptions.style = 'border-color: transparent !important;';
+    renderTabList("Support");
+})
+
+servicesOptions.addEventListener("click", () => {
+    allOptions.style = 'border-color: transparent !important;';
+    foundingOptions.style = 'border-color: transparent !important;';
+    supportOptions.style = 'border-color: transparent !important;';
+    servicesOptions.style = 'border-color: #fff !important;';
+    eventsOptions.style = 'border-color: transparent !important;';
+    renderTabList("Services");
+})
+
+eventsOptions.addEventListener("click", () => {
+    allOptions.style = 'border-color: transparent !important;';
+    foundingOptions.style = 'border-color: transparent !important;';
+    supportOptions.style = 'border-color: transparent !important;';
+    servicesOptions.style = 'border-color: transparent !important;';
+    eventsOptions.style = 'border-color: #fff !important;';
+    renderTabList("Events");
+})
+
+function renderTabList(search) {
+    let resultSearch = search === 'All' ? finallResult : finallResult.filter(item => item.type_grant.some(i => i.includes(`${search}`)));
+    
+    let containerResultBox = document.querySelector("div.results-box > div.container-box");
+    containerResultBox.innerHTML = '';
+    document.querySelector("#results-score").innerHTML = `${correctGrantList.length} Results`
+    resultSearch.map(item => {
+        const resultItem = document.createElement("div");
+        resultItem.className = "result-item";
+        resultItem.innerHTML = `<div class="result-item-header">
+        ${item.type_grant.map(type => {
+            return `<span>${type}</span> `
+        })}
+    </div>
+
+    <div class="result-item-title">
+        <h3>${item.title.rendered}</h3>
+    </div>
+
+    <div style="text-align:center" class="result-item-content">
+        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180) + `...`}</p>
+    </div>
+
+    <div class="result-item-footer">
+        <a href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
+    </div>`;
+
+    containerResultBox.appendChild(resultItem);
+    })
+    
+}
 
 function hideMainBox() {
     mainContainer.style = "display: none";
     searchResultBox2.style = "display: block";
-    renderResults();
     convert();
 }
 
@@ -85,20 +174,23 @@ function hideMainBox() {
                             )
         
                             finallResult.push(item);
+                            renderResults();
     })
+    
 }
 
 function renderResults() {
-    let mainDoneList = correctGrantList;
+    let mainDoneList = finallResult;
     let containerResultBox = document.querySelector("div.results-box > div.container-box");
-    document.querySelector("#results-score").innerHTML = `${mainDoneList.length} Results`
+    containerResultBox.innerHTML = '';
+    document.querySelector("#results-score").innerHTML = `${correctGrantList.length} Results`
     mainDoneList.map(item => {
-        
         const resultItem = document.createElement("div");
         resultItem.className = "result-item";
         resultItem.innerHTML = `<div class="result-item-header">
-        <span><i class="far fa-calendar-alt"></i> Support</span> 
-        <span><i class="far fa-calendar-alt"></i> Events</span>
+        ${item.type_grant.map(type => {
+            return `<span></i> ${type}</span> `
+        })}
     </div>
 
     <div class="result-item-title">

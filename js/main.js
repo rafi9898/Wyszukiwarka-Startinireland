@@ -9,19 +9,21 @@ const getIndustrySector = () => {
     .then(function(data) {
       const industryList = data;
       industryList.map(industry => {
-          const label = document.createElement("label");
-          const input = document.createElement("input");
-          const span = document.createElement("span");
-          input.className = 'sector-1';
-          input.setAttribute("type", 'checkbox');
-          input.setAttribute("key", industry.id);
-          input.setAttribute("value", industry.id);
-          input.setAttribute("onchange", `setSector('${industry.id}')`)
-          label.appendChild(input);
-          span.innerHTML = `${industry.name}`
-          label.appendChild(span);
-
-          optionsSector.appendChild(label);
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            const span = document.createElement("span");
+            industry.name == "All" ? label.style = "display: none" : null
+            input.className = 'sector-1';
+            input.setAttribute("type", 'checkbox');
+            input.setAttribute("key", industry.id);
+            input.setAttribute("value", industry.id);
+            input.setAttribute("onchange", `setSector('${industry.id}')`)
+            label.appendChild(input);
+            span.innerHTML = `${industry.name}`
+            label.appendChild(span);
+  
+            optionsSector.appendChild(label);
+          
         
       })
       })
@@ -59,7 +61,6 @@ const getLocation = () => {
     .then((resp) => resp.json()) // Transform the data into json
     .then(function(data) {
       const locationsList = data;
-      console.log(locationsList)
       const listSelect = document.querySelector("#choices-multiple-remove-button-1");
       locationsList.map(location => {
           let optionItem = document.createElement("option");

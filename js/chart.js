@@ -9,13 +9,13 @@ const renderChartGlobal = (color1, color2, color3, color4, color5) => {
     const data = {
         labels: [
             'Stage',
-            'Service',
+            'Type',
             'Founding',
             'Location',
             'Sector'
         ],
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Chart',
             data: [100, 100, 100, 100, 100],
             backgroundColor: [
                 `${color2 ? color2 : '#563769'}`,

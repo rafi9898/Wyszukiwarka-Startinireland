@@ -7,7 +7,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
-    background-image: linear-gradient(90deg, #563769 5%,#34254a 80%);
+    background-image: linear-gradient(90deg, #563769 5%,#34254a 80%);overflow-x: none;
 }
 
 #main-container {
@@ -370,7 +370,7 @@ i.fa-info {
 
 div.number-of-active-section {
     position: absolute;
-    top: 22vh;
+    top: 35%;
     left: 46%;
     text-align: center;
 }
@@ -379,6 +379,142 @@ div.number-of-active-section > h3 {
     font-size: 27px;
     text-align: center;
 }
+
+@media(max-width: 1100px) {
+    #fixed-box {
+        position: absolute !important;
+        width: 100% !important;
+        text-align: center;
+        
+       
+    }
+
+
+    .info-box .container-box  {
+        margin-bottom: 25px;
+    }
+
+    #wheel-container {
+        padding: 0px !important;
+    }
+
+    #fixed-box > div.container {
+        width: 40vw;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    div.number-of-active-section {
+        position: absolute;
+        top: 27% !important;
+        left: 47% !important;
+    }
+}
+
+
+@media(max-width: 800px) {
+    #fixed-box {
+        position: absolute !important;
+        width: 100% !important;
+        text-align: center;
+        
+       
+    }
+
+    .result-item {
+        width: 90% !important;
+    }
+
+    #services-required-box > div.options > label {
+        width: 50%;
+    }
+
+    div.range-box-item {
+        width: 50%;
+    }
+
+    #sector-one-box > div.options > label {
+        width: 50%;
+    }
+
+    #fixed-box > div.container {
+        width: 40vw;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    div.number-of-active-section {
+        position: absolute;
+        top: 25% !important;
+        left: 45% !important;
+    }
+}
+
+
+@media(max-width: 600px) {
+    #fixed-box {
+        position: absolute !important;
+        width: 100% !important;
+        text-align: center;
+        
+       
+    }
+
+    #fixed-box > div.container {
+        width: 70vw;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    div.number-of-active-section {
+        position: absolute;
+        top: 28% !important;
+        left: 43% !important;
+    }
+}
+
+@media(max-width: 414px) {
+    #fixed-box {
+        position: absolute !important;
+        width: 100% !important;
+        text-align: center;
+        
+       
+    }
+
+    #fixed-box > div.container {
+        width: 80vw;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    div.number-of-active-section {
+        position: absolute;
+        top: 26% !important;
+        left: 41% !important;
+    }
+}
+
+@media(max-width: 1500px) {
+    
+div.number-of-active-section {
+    position: absolute;
+    top: 33%;
+    left: 45%;
+}
+
+div.number-of-active-section > h3 {
+    font-size: 18px !important;
+}
+
+
+}
+
+
 
 div.number-of-active-section > p {
   
@@ -453,6 +589,10 @@ div.minority > p {
     margin-top: 5px;
 }
 
+
+.modal-dialog {
+    margin-top: 45vh;
+}
 
 @media(max-width: 1100px) {
     #sectors {
