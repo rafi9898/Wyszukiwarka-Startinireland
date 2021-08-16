@@ -4,6 +4,7 @@ const selectPrice = document.querySelector("select#choices-multiple-remove-butto
 const selectLocation = document.querySelector("select.location-select");
 const numberOfResultsSpan = document.querySelector("#number-of-current-item");
 const minorityCheckbox = document.querySelector("#minority-checkbox");
+let minorityId;
 let checkedSector = false;
 let checkedServices = false;
  
@@ -73,7 +74,7 @@ function fetchPrices() {
 fetchPrices()
  
  
-const filter = (minorityId) => {
+const filter = () => {
     let filtered = grants
  
  
@@ -83,6 +84,7 @@ const filter = (minorityId) => {
     if (selectedMinority) {
         filtered = filtered.filter(grant => grant.minority.includes(minorityId))
     }
+
     if(selectedStartUp.length !== 0) {
         filtered = filtered.filter(grant => selectedStartUp.some(i => grant.startup_stage.includes(Number(i))))
     }
@@ -131,7 +133,6 @@ const setStartup = (id) => {
 }
  
 minorityCheckbox.addEventListener("change", (e) => {
-    let minorityId;
      fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority`)
     .then((resp) => resp.json()) // Transform the data into json
     .then(function (data) {
@@ -141,7 +142,7 @@ minorityCheckbox.addEventListener("change", (e) => {
             }
         })
         selectedMinority = e.target.checked;
-        filter(minorityId)
+        filter()
     });
 })
  
