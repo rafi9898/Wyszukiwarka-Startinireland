@@ -12,12 +12,17 @@ var csvFileData = [
             const arr = [];
             arr.push(item.title.rendered.replace(/[^a-zA-Z ]/g, ""))
             arr.push(item.link)
+            arr.push(item.purpose.join().replace(",", " ").replace(/[^a-zA-Z ]/g, ""));
             arr.push(item.funding_amound.join())
             arr.push(item.industry_sector.join("   "))
             arr.push(item.startup_stage.join("   "))
             arr.push(item.location.join("   "))
             arr.push(item.type_grant.join("   "))
             arr.push(item.services.join("   "))
+            arr.push(item.source.join("   ").replace(",", " ").replace(/[^a-zA-Z ]/g, ""))
+            arr.push(item.minority.join("   ").replace(",", " ").replace(/[^a-zA-Z ]/g, ""))
+            arr.push(item.how_apply.join("   ").replace(",", " ").replace(/[^a-zA-Z ]/g, ""))
+            arr.push(item.cover.join("   ").replace(",", " "))
              csvFileData.push(arr)
         })
 
@@ -25,7 +30,7 @@ var csvFileData = [
     }
 
     function exportReadyFile() {
-        var csv = 'Name,Website,Funding_amound,Industry_sector,Startup_stage,Location,Type_grant,Servis\n';  
+        var csv = 'Name,Website,Purpose,Funding_amound,Industry_sector,Startup_stage,Location,Type_grant,Servis,Source,Minority,How Apply,Cover\n';  
       
         csvFileData.forEach(function(row) {  
             csv += row.join(',');  

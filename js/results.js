@@ -129,6 +129,65 @@ function hideMainBox() {
             )
 
 
+            item.cover = await Promise.all(
+                item.cover.map(async (karuzelaId) => {
+                const cover = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/cover/${karuzelaId}`)
+                .then((resp) => resp.json()) // Transform the data into json
+                .then(function (data) {
+                    return data
+                });
+                return cover.name;
+                })
+                )
+
+
+                item.how_apply = await Promise.all(
+                    item.how_apply.map(async (karuzelaId) => {
+                    const how_apply = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/how_apply/${karuzelaId}`)
+                    .then((resp) => resp.json()) // Transform the data into json
+                    .then(function (data) {
+                        return data
+                    });
+                    return how_apply.name;
+                    })
+                    )
+
+
+                    item.source = await Promise.all(
+                        item.source.map(async (karuzelaId) => {
+                        const source = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/source/${karuzelaId}`)
+                        .then((resp) => resp.json()) // Transform the data into json
+                        .then(function (data) {
+                            return data
+                        });
+                        return source.name;
+                        })
+                        )
+    
+
+                        item.purpose = await Promise.all(
+                            item.purpose.map(async (karuzelaId) => {
+                            const purpose = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/purpose/${karuzelaId}`)
+                            .then((resp) => resp.json()) // Transform the data into json
+                            .then(function (data) {
+                                return data
+                            });
+                            return purpose.name;
+                            })
+                            )
+
+                            item.minority = await Promise.all(
+                                item.minority.map(async (karuzelaId) => {
+                                const minority = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority/${karuzelaId}`)
+                                .then((resp) => resp.json()) // Transform the data into json
+                                .then(function (data) {
+                                    return data
+                                });
+                                return minority.name;
+                                })
+                                )
+
+
             item.industry_sector = await Promise.all(
                 item.industry_sector.map(async (karuzelaId) => {
                 const industry_sector = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector/${karuzelaId}`)
@@ -176,7 +235,6 @@ function hideMainBox() {
                             finallResult.push(item);
                             renderResults();
     })
-    
 }
 
 function renderResults() {

@@ -73,7 +73,7 @@ function fetchPrices() {
 fetchPrices()
  
  
-const filter = () => {
+const filter = (minorityId) => {
     let filtered = grants
  
  
@@ -81,7 +81,7 @@ const filter = () => {
         filtered = filtered.filter(grant => selectedSectors.some(i => grant.industry_sector.includes(Number(i))))
     }
     if (selectedMinority) {
-        filtered = filtered.filter(grant => grant.minority.includes("Yes"))
+        filtered = filtered.filter(grant => grant.minority.includes(minorityId))
     }
     if(selectedStartUp.length !== 0) {
         filtered = filtered.filter(grant => selectedStartUp.some(i => grant.startup_stage.includes(Number(i))))
@@ -131,8 +131,18 @@ const setStartup = (id) => {
 }
  
 minorityCheckbox.addEventListener("change", (e) => {
-    selectedMinority = e.target.checked;
-    filter()
+    let minorityId;
+     fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority`)
+    .then((resp) => resp.json()) // Transform the data into json
+    .then(function (data) {
+        data.map(item => {
+            if(item.name === "Yes") {
+                minorityId = item.id;
+            }
+        })
+        selectedMinority = e.target.checked;
+        filter(minorityId)
+    });
 })
  
 selectLocation.addEventListener("change", (e) => {
