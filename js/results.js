@@ -3,21 +3,21 @@ const mainContainer = document.querySelector("#main-container");
 const viewResultBtn1 = document.querySelector("#view-result2");
 const viewResultBtn22 = document.querySelector("#wheel-container button");
 const startAgainBtn = document.querySelector("#start-again");
-
+ 
 const finallResult = [];
-
+ 
 //Options Tab
 const allOptions = document.querySelector("#all-options");
 const foundingOptions = document.querySelector("#founding-options");
 const supportOptions = document.querySelector("#support-options");
 const servicesOptions = document.querySelector("#services-options");
 const eventsOptions = document.querySelector("#events-options");
-
-
+ 
+ 
 startAgainBtn.addEventListener("click", () => {
     window.location.reload(true);
 })
-
+ 
 allOptions.addEventListener("click", () => {
     allOptions.style = 'border-color: #fff !important;';
     foundingOptions.style = 'border-color: transparent !important;';
@@ -26,7 +26,7 @@ allOptions.addEventListener("click", () => {
     eventsOptions.style = 'border-color: transparent !important;';
     renderTabList("All");
 })
-
+ 
 foundingOptions.addEventListener("click", () => {
     allOptions.style = 'border-color: transparent !important;';
     foundingOptions.style = 'border-color: #fff !important;';
@@ -35,7 +35,7 @@ foundingOptions.addEventListener("click", () => {
     eventsOptions.style = 'border-color: transparent !important;';
     renderTabList("Funding");
 })
-
+ 
 supportOptions.addEventListener("click", () => {
     allOptions.style = 'border-color: transparent !important;';
     foundingOptions.style = 'border-color: transparent !important;';
@@ -44,7 +44,7 @@ supportOptions.addEventListener("click", () => {
     eventsOptions.style = 'border-color: transparent !important;';
     renderTabList("Support");
 })
-
+ 
 servicesOptions.addEventListener("click", () => {
     allOptions.style = 'border-color: transparent !important;';
     foundingOptions.style = 'border-color: transparent !important;';
@@ -53,7 +53,7 @@ servicesOptions.addEventListener("click", () => {
     eventsOptions.style = 'border-color: transparent !important;';
     renderTabList("Services");
 })
-
+ 
 eventsOptions.addEventListener("click", () => {
     allOptions.style = 'border-color: transparent !important;';
     foundingOptions.style = 'border-color: transparent !important;';
@@ -62,10 +62,10 @@ eventsOptions.addEventListener("click", () => {
     eventsOptions.style = 'border-color: #fff !important;';
     renderTabList("Events");
 })
-
+ 
 function renderTabList(search) {
     let resultSearch = search === 'All' ? finallResult : finallResult.filter(item => item.type_grant.some(i => i.includes(`${search}`)));
-    
+ 
     let containerResultBox = document.querySelector("div.results-box > div.container-box");
     containerResultBox.innerHTML = '';
     document.querySelector("#results-score").innerHTML = `${correctGrantList.length} Results`
@@ -77,166 +77,97 @@ function renderTabList(search) {
             return `<span>${type}</span> `
         })}
     </div>
-
+ 
     <div class="result-item-title">
         <h3>${item.title.rendered}</h3>
     </div>
-
+ 
     <div style="text-align:center" class="result-item-content">
         <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}</p>
     </div>
-
+ 
     <div class="result-item-footer">
-        <a href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
+        <a target="_blank" href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
     </div>`;
-
-    containerResultBox.appendChild(resultItem);
+ 
+        containerResultBox.appendChild(resultItem);
     })
-    
+ 
 }
-
+ 
 function hideMainBox() {
     mainContainer.style = "display: none";
     searchResultBox2.style = "display: block";
     convert();
 }
-
- function convert() {
+ 
+ 
+async function convert() {
     let newArray = correctGrantList;
-    
+    const tasks = Promise.all([
+        // startup_stage:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/startup_stage`),
+        // services:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/services`),
+        // cover:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/cover`),
+        // how_apply:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/how_apply`),
+        // source:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/source`),
+        // purpose:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/purpose`),
+        // minority:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority`),
+        // industry_sector:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector`),
+        // funding_amound:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/funding_amound`),
+        // location:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/location`),
+        // type_grant:
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/type_grant`)
+    ])
+ 
+    const data = await tasks
+    const startup_stage = await data[0].json()
+    const services = await data[1].json()
+    const cover = await data[2].json()
+    const how_apply = await data[3].json()
+    const source = await data[4].json()
+    const purpose = await data[5].json()
+    const minority = await data[6].json()
+    const industry_sector = await data[7].json()
+    const funding_amound = await data[8].json()
+    const location = await data[9].json()
+    const type_grant = await data[10].json()
+ 
     newArray.map(async item => {
-
-        item.startup_stage = await Promise.all(
-            item.startup_stage.map(async (karuzelaId) => {
-            const startup_stage = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/startup_stage/${karuzelaId}`)
-            .then((resp) => resp.json()) // Transform the data into json
-            .then(function (data) {
-                return data
-            });
-            return startup_stage.name;
-            })
-            )
-            
-        item.services = await Promise.all(
-            item.services.map(async (karuzelaId) => {
-            const services = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/services/${karuzelaId}`)
-            .then((resp) => resp.json()) // Transform the data into json
-            .then(function (data) {
-                return data
-            });
-            return services.name;
-            })
-            )
-
-
-            item.cover = await Promise.all(
-                item.cover.map(async (karuzelaId) => {
-                const cover = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/cover/${karuzelaId}`)
-                .then((resp) => resp.json()) // Transform the data into json
-                .then(function (data) {
-                    return data
-                });
-                return cover.name;
-                })
-                )
-
-
-                item.how_apply = await Promise.all(
-                    item.how_apply.map(async (karuzelaId) => {
-                    const how_apply = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/how_apply/${karuzelaId}`)
-                    .then((resp) => resp.json()) // Transform the data into json
-                    .then(function (data) {
-                        return data
-                    });
-                    return how_apply.name;
-                    })
-                    )
-
-
-                    item.source = await Promise.all(
-                        item.source.map(async (karuzelaId) => {
-                        const source = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/source/${karuzelaId}`)
-                        .then((resp) => resp.json()) // Transform the data into json
-                        .then(function (data) {
-                            return data
-                        });
-                        return source.name;
-                        })
-                        )
-    
-
-                        item.purpose = await Promise.all(
-                            item.purpose.map(async (karuzelaId) => {
-                            const purpose = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/purpose/${karuzelaId}`)
-                            .then((resp) => resp.json()) // Transform the data into json
-                            .then(function (data) {
-                                return data
-                            });
-                            return purpose.name;
-                            })
-                            )
-
-                            item.minority = await Promise.all(
-                                item.minority.map(async (karuzelaId) => {
-                                const minority = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority/${karuzelaId}`)
-                                .then((resp) => resp.json()) // Transform the data into json
-                                .then(function (data) {
-                                    return data
-                                });
-                                return minority.name;
-                                })
-                                )
-
-
-            item.industry_sector = await Promise.all(
-                item.industry_sector.map(async (karuzelaId) => {
-                const industry_sector = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector/${karuzelaId}`)
-                .then((resp) => resp.json()) // Transform the data into json
-                .then(function (data) {
-                    return data
-                });
-                return industry_sector.name;
-                })
-                )
-
-                item.funding_amound = await Promise.all(
-                    item.funding_amound.map(async (karuzelaId) => {
-                    const funding_amound = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/funding_amound/${karuzelaId}`)
-                    .then((resp) => resp.json()) // Transform the data into json
-                    .then(function (data) {
-                        return data
-                    });
-                    return funding_amound.name;
-                    })
-                    )
-
-                    item.location = await Promise.all(
-                        item.location.map(async (karuzelaId) => {
-                        const location = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/location/${karuzelaId}`)
-                        .then((resp) => resp.json()) // Transform the data into json
-                        .then(function (data) {
-                            return data
-                        });
-                        return location.name;
-                        })
-                        )
-
-                        item.type_grant = await Promise.all(
-                            item.type_grant.map(async (karuzelaId) => {
-                            const type_grant = await fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/type_grant/${karuzelaId}`)
-                            .then((resp) => resp.json()) // Transform the data into json
-                            .then(function (data) {
-                                return data
-                            });
-                            return type_grant.name;
-                            })
-                            )
-        
-                            finallResult.push(item);
-                            renderResults();
+ 
+        item.startup_stage = item.startup_stage.map((id) => startup_stage.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.services = item.services.map((id) => services.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.cover = item.cover.map((id) => cover.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.how_apply = item.how_apply.map((id) => how_apply.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.source = item.source.map((id) => source.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.purpose =  item.purpose.map((id) => purpose.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.minority = item.minority.map((id) => minority.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.industry_sector = item.industry_sector.map((id) => industry_sector.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.funding_amound = item.funding_amound.map((id) => funding_amound.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.location = item.location.map((id) => location.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.type_grant = item.type_grant.map((id) => type_grant.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+ 
+        finallResult.push(item);
+        renderResults();
     })
 }
 
+function showMore(e) {
+    const value = e.getAttribute("key");
+    e.style = "color: #333"
+    e.innerHTML = value.slice(180, value.length)
+}
+
+ 
 function renderResults() {
     let mainDoneList = finallResult;
     let containerResultBox = document.querySelector("div.results-box > div.container-box");
@@ -250,24 +181,23 @@ function renderResults() {
             return `<span></i> ${type}</span> `
         })}
     </div>
-
+ 
     <div class="result-item-title">
         <h3>${item.title.rendered}</h3>
     </div>
-
+ 
     <div style="text-align:center" class="result-item-content">
-        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}...</p>
+    <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}<span key="${item.content.rendered}" style="color: blue; cursor: pointer;" onclick="showMore(this)" class="show-more-text">...More</span></p>
     </div>
-
+ 
     <div class="result-item-footer">
-        <a href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
+        <a target="_blank" href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
     </div>`;
-
-    containerResultBox.appendChild(resultItem);
+ 
+        containerResultBox.appendChild(resultItem);
     })
  
 }
-
+ 
 viewResultBtn1.addEventListener("click", hideMainBox);
 viewResultBtn22.addEventListener("click", hideMainBox);
-

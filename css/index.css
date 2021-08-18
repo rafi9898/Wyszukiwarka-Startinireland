@@ -4,11 +4,16 @@
     box-sizing: border-box;
 }
 
+html {
+    background: transparent !important;
+    }
+    
+
 body {
-    font-family: 'Raleway', sans-serif;
-    overflow-x: hidden;
-    background-image: linear-gradient(90deg, #563769 5%,#34254a 80%);overflow-x: none;
-}
+        font-family: 'Raleway', sans-serif;
+        overflow-x: hidden;
+        background: transparent !important;
+    }
 
 #main-container {
     width: 100vw;
