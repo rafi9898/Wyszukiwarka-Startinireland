@@ -185,12 +185,13 @@ main {
     content: attr(data-title);
     background-color: #70538B;
     color: #fff;
-    font-size: 22px;
+    font-size: 17px;
+    width: 40vw;
     position: absolute;
     padding: 1px 5px 2px 5px;
     bottom: -1.6em;
     left: 100%;
-    white-space: nowrap;
+    word-break: break-all;
     box-shadow: 1px 1px 3px #222222;
     opacity: 0;
     border: 1px solid #111111;

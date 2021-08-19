@@ -87,7 +87,7 @@ function renderTabList(search) {
     </div>
  
     <div class="result-item-footer">
-        <a target="_blank" href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
+    ${item.website.length > 0 ? `<a target="_blank" href="${item.website}"><i class="fas fa-external-link-alt"></i> Visit website</a>` : ""}
     </div>`;
  
         containerResultBox.appendChild(resultItem);
@@ -106,27 +106,29 @@ async function convert() {
     let newArray = correctGrantList;
     const tasks = Promise.all([
         // startup_stage:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/startup_stage`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/startup_stage?per_page=100`),
         // services:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/services`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/services?per_page=100`),
         // cover:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/cover`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/cover?per_page=100`),
         // how_apply:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/how_apply`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/how_apply?per_page=100`),
         // source:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/source`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/source?per_page=100`),
         // purpose:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/purpose`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/purpose?per_page=100`),
         // minority:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/minority?per_page=100`),
         // industry_sector:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/industry_sector?per_page=100`),
         // funding_amound:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/funding_amound`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/funding_amound?per_page=100`),
         // location:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/location`),
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/location?per_page=100`),
         // type_grant:
-        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/type_grant`)
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/type_grant?per_page=100`),
+        //Website
+        fetch(`https://ftbi.siteon.pl/wp-json/wp/v2/website?per_page=100`),
     ])
  
     const data = await tasks
@@ -141,11 +143,13 @@ async function convert() {
     const funding_amound = await data[8].json()
     const location = await data[9].json()
     const type_grant = await data[10].json()
+    const website = await data[11].json()
  
     newArray.map(async item => {
  
         item.startup_stage = item.startup_stage.map((id) => startup_stage.find(s => s.id == id)).filter(Boolean).map(i => i.name)
         item.services = item.services.map((id) => services.find(s => s.id == id)).filter(Boolean).map(i => i.name)
+        item.website = item.website.map((id) => website.find(s => s.id == id)).filter(Boolean).map(i => i.name)
         item.cover = item.cover.map((id) => cover.find(s => s.id == id)).filter(Boolean).map(i => i.name)
         item.how_apply = item.how_apply.map((id) => how_apply.find(s => s.id == id)).filter(Boolean).map(i => i.name)
         item.source = item.source.map((id) => source.find(s => s.id == id)).filter(Boolean).map(i => i.name)
@@ -191,7 +195,7 @@ function renderResults() {
     </div>
  
     <div class="result-item-footer">
-        <a target="_blank" href="${item.link}"><i class="fas fa-external-link-alt"></i> Visit website</a>
+        ${item.website.length > 0 ? `<a target="_blank" href="${item.website}"><i class="fas fa-external-link-alt"></i> Visit website</a>` : ""}
     </div>`;
  
         containerResultBox.appendChild(resultItem);

@@ -11,7 +11,7 @@ var csvFileData = [
         finallData.map(item => {
             const arr = [];
             arr.push(item.title.rendered.replace(/[^a-zA-Z ]/g, ""))
-            arr.push(item.link)
+            arr.push(item.website)
             arr.push(item.purpose.join().replace(",", " ").replace(/[^a-zA-Z ]/g, ""));
             arr.push(item.funding_amound.join())
             arr.push(item.industry_sector.join("   "))
