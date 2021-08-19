@@ -6,7 +6,7 @@ var csvFileData = [
 
 
     function prepareData() {
-        csvFileData = []
+        csvFileData = [['Name','Website','Purpose','Funding_amound','Industry_sector','Startup_stage','Location','Type_grant', 'Servis','Source','Minority','How Apply','Cover']]
         let finallData = finallResult;
         finallData.map(item => {
             const arr = [];
@@ -30,17 +30,22 @@ var csvFileData = [
     }
 
     function exportReadyFile() {
-        var csv = 'Name,Website,Purpose,Funding_amound,Industry_sector,Startup_stage,Location,Type_grant,Servis,Source,Minority,How Apply,Cover\n';  
+    //     var csv = ;  
       
-        csvFileData.forEach(function(row) {  
-            csv += row.join(',');  
-            csv += "\n";  
-    });  
+    //     csvFileData.forEach(function(row) {  
+    //         csv += row.join(',');  
+    //         csv += "\n";  
+    // });  
 
-        exportCsvBtn.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);  
-        exportCsvBtn.target = '_blank';  
-        exportCsvBtn.download = 'data.csv';  
-        exportCsvBtn.click();
+    //     exportCsvBtn.href = 'data:text/xls;charset=utf-8,' + encodeURI(csv);  
+    //     exportCsvBtn.target = '_blank';  
+    //     exportCsvBtn.download = 'data.xls';  
+    //     exportCsvBtn.click();
+
+    const wb = XLSX.utils.book_new();
+    const ke = XLSX.utils.aoa_to_sheet(csvFileData);
+    XLSX.utils.book_append_sheet(wb, ke, 'Sheet1');
+    XLSX.writeFile(wb, 'data.xlsx');
     }
 
     exportCsvBtn.addEventListener("click", () => {
