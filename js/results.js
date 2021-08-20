@@ -83,7 +83,7 @@ function renderTabList(search) {
     </div>
  
     <div style="text-align:center" class="result-item-content">
-        <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}</p>
+    <p class="${item.slug}result-content">${item.content.rendered.length < 180 ? item.content.rendered : item.content.rendered.slice(0, 180)}<span key="${item.content.rendered}" style="color: blue; cursor: pointer;" onclick="showMore(this)" class="show-more-text">...More</span></p>
     </div>
  
     <div class="result-item-footer">
