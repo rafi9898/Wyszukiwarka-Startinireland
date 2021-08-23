@@ -32,11 +32,14 @@ const renderChartGlobal = (color1, color2, color3, color4, color5) => {
         type: 'doughnut',
         data: data,
         options: {
+            
             plugins: {
                 legend: {
                     display: false
-                }
-            }
+                },
+                tooltip: false
+            
+            },
         }
     };
     

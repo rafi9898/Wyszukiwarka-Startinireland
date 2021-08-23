@@ -444,6 +444,7 @@ div.number-of-active-section > h3 {
 }
 
 
+
 @media(max-width: 800px) {
     #fixed-box {
         position: absolute !important;
@@ -451,6 +452,10 @@ div.number-of-active-section > h3 {
         text-align: center;
         
        
+    }
+
+    #wheel-container {
+        min-height: auto !important;
     }
 
     .result-item {
